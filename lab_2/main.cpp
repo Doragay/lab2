@@ -5,30 +5,41 @@
 #include <memory>
 #include <iostream>
 #include <QCoreApplication>
+#include <fabrics.h>
 
-std::string generateProgram() {
-    ClassUnit myClass( "MyClass" );
-    myClass.add(
-        std::make_shared <MethodUnit>( "testFunc1", "void", 0 ),
-        ClassUnit::PUBLIC
-        );
-    myClass.add(
-        std::make_shared <MethodUnit>( "testFunc2", "void", MethodUnit::STATIC ),
-        ClassUnit::PRIVATE
-        );
-    myClass.add(
-        std::make_shared< MethodUnit >( "testFunc3", "void", MethodUnit::VIRTUAL |
-                                                              MethodUnit::CONST ),
-        ClassUnit::PUBLIC
-        );
-    auto method = std::make_shared< MethodUnit >( "testFunc4", "void",
-                                               MethodUnit::STATIC );
-    method->add( std::make_shared< PrintOperatorUnit >( R"(Hello, world!\n)" ) );
-    myClass.add( method, ClassUnit::PROTECTED );
-    return myClass.compile();
+std::string generateProgram( const std::shared_ptr< AbstractFactory >& program ) {
+    std::string str = "MyClass";
+    auto myClass = program->CreateClass(str);//создаем класс
+    myClass->Add(program->CreateMethod( "testFunc1", "void", 0 ),AbstractClassUnit::PUBLIC);
+    myClass->Add(program->CreateMethod( "testFunc2", "void", AbstractMethodUnit::STATIC ),AbstractClassUnit::PRIVATE);
+    myClass->Add(program->CreateMethod( "testFunc3", "void", AbstractMethodUnit::VIRTUAL | AbstractMethodUnit::CONST ), AbstractClassUnit::PUBLIC);
+    std::shared_ptr< AbstractMethodUnit > method = program->CreateMethod( "testFunc4", "void",AbstractMethodUnit::EXTERN );
+    method->Add( program->CreatePrintOperator( R"(Hello, world!\n)" ) );
+    myClass->Add( method, AbstractClassUnit::PROTECTED );
+    myClass->Add(program->CreateMethod( "testFunc5", "void", AbstractMethodUnit::VIRTUAL | AbstractMethodUnit::CONST ), AbstractClassUnit::PUBLIC);
+
+    return myClass->Compile();
+
 }
 
-int main() {
-    std::cout << generateProgram() << std::endl;
-    return 0;
+int main(int argc, char *argv[])
+{
+    std::cout << "=================================" << std::endl;
+    std::cout << "C++ program" << std::endl;
+    std::cout << "=================================" << std::endl;
+    std::cout << generateProgram(std::make_shared< CppFactory >()) << std::endl;
+    std::cout << std::endl;
+
+    QCoreApplication a(argc, argv);
+    std::cout << "=================================" << std::endl;
+    std::cout << "C# program" << std::endl;
+    std::cout << "=================================" << std::endl;
+    std::cout << generateProgram(std::make_shared< CsFactory >()) << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "=================================" << std::endl;
+    std::cout << "Java program" << std::endl;
+    std::cout << "=================================" << std::endl;
+    std::cout << generateProgram(std::make_shared< JavaFactory >()) << std::endl;
+    return a.exec();
 }

@@ -1,17 +1,28 @@
-#include <string>
-#include <vector>
-#include <unit.h>
 #ifndef PRINTOPERATORUNIT_H
 #define PRINTOPERATORUNIT_H
 
-class PrintOperatorUnit : public Unit {
+#include <AbstractProducts.h>
+class CppPrintUnit final:public AbstractPrintUnit
+{
 public:
-    explicit PrintOperatorUnit( const std::string& text ) : m_text( text ) { }
-    std::string compile( unsigned int level = 0 ) const {
-        return generateShift( level ) + "printf( \"" + m_text + "\" );\n";
-    }
-private:
-    std::string m_text;
+    CppPrintUnit( const std::string& text ) : AbstractPrintUnit( text ) { }
+    std::string Compile( unsigned int level = 0 ) const;
 };
+
+
+class CsPrintUnit final: public AbstractPrintUnit
+{
+public:
+    CsPrintUnit( const std::string& text ) : AbstractPrintUnit( text ) { }
+    std::string Compile( unsigned int level = 0 ) const;
+};
+
+class JavaPrintUnit final:public AbstractPrintUnit
+{
+public:
+    JavaPrintUnit( const std::string& text ) : AbstractPrintUnit( text ) { }
+    std::string Compile( unsigned int level = 0 ) const;
+};
+
 
 #endif // PRINTOPERATORUNIT_H

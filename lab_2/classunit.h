@@ -1,29 +1,32 @@
-#include <vector>
-#include <memory>
-#include <string>
-#include <unit.h>
 #ifndef CLASSUNIT_H
 #define CLASSUNIT_H
 
-class ClassUnit : public Unit
+#include <AbstractProducts.h>
+#include <memory>
+#include <vector>
+#include <string>
+
+class CppClassUnit final: public AbstractClassUnit
 {
 public:
-    enum AccessModifier {
-        PUBLIC,
-        PROTECTED,
-        PRIVATE
-    };
-    static const std::vector< std::string > ACCESS_MODIFIERS;
-public:
-    explicit ClassUnit( const std::string& name );
-    void add( const std::shared_ptr< Unit >& unit, Flags flags );
-    std::string compile( unsigned int level = 0 ) const;
-private:
-    std::string m_name;
-    using Fields = std::vector< std::shared_ptr< Unit > >;
-    std::vector< Fields > m_fields;
+    CppClassUnit( const std::string& name ) : AbstractClassUnit(name){}//конструктор
+    std::string Compile( unsigned int level = 0 ) const;
 };
-const std::vector< std::string > ClassUnit::ACCESS_MODIFIERS = { "public",
-                                                              "protected", "private" };
+
+class CsClassUnit final:public AbstractClassUnit
+{
+public:
+    CsClassUnit( const std::string& name ) : AbstractClassUnit(name){}
+    std::string Compile( unsigned int level = 0 ) const;
+};
+
+
+class JavaClassUnit final:public AbstractClassUnit
+{
+public:
+    JavaClassUnit( const std::string& name ) : AbstractClassUnit(name){}
+    std::string Compile( unsigned int level = 0 ) const;
+};
+
 
 #endif // CLASSUNIT_H

@@ -35,7 +35,7 @@ protected:
     std::vector<Fields> m_fields;
 public:
     explicit AbstractClassUnit( const std::string& name ) : m_name(name){
-        m_fields.resize( ACCESS_MODIFIERS.size() );
+        m_fields.resize( ACCESS_MODIFIERS.size() );}//изменяет размер
     void Add(const std::shared_ptr<AbstractUnit >& unit, Flags flags );
 
 };
@@ -60,7 +60,7 @@ public:
 
 public:
     AbstractMethodUnit( const std::string& name, const std::string& returnType, Flags flags ) : m_name( name ), m_returnType( returnType ), m_flags( flags ){}
-    void Add(const std::shared_ptr<AbstractUnit>& unit, Flags /* flags */ = 0 );
+    void Add(const std::shared_ptr<AbstractUnit>& unit, Flags = 0 );
 
 };
 

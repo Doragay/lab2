@@ -6,7 +6,7 @@
 #include "printoperatorunit.h"
 #include "AbstractProducts.h"
 #include <memory>
-class AbstractFactory
+class AbstractFactory//интерфейс для фабричных методов
 {
 public:
     virtual std::unique_ptr < AbstractClassUnit > CreateClass(const std::string& name) = 0;

@@ -10,13 +10,13 @@
 std::string generateProgram( const std::shared_ptr< AbstractFactory >& program ) {
     std::string str = "MyClass";
     auto myClass = program->CreateClass(str);//создаем класс
-    myClass->Add(program->CreateMethod( "testFunc1", "void", 0 ),AbstractClassUnit::PUBLIC);
-    myClass->Add(program->CreateMethod( "testFunc2", "void", AbstractMethodUnit::STATIC ),AbstractClassUnit::PRIVATE);
-    myClass->Add(program->CreateMethod( "testFunc3", "void", AbstractMethodUnit::VIRTUAL | AbstractMethodUnit::CONST ), AbstractClassUnit::PUBLIC);
-    std::shared_ptr< AbstractMethodUnit > method = program->CreateMethod( "testFunc4", "void",AbstractMethodUnit::EXTERN );
+    myClass->Add(program->CreateMethod( "Functhion1", "void", 0 ),AbstractClassUnit::PUBLIC);//добавляю метод к классу
+    myClass->Add(program->CreateMethod( "Functhion2", "void", AbstractMethodUnit::STATIC ),AbstractClassUnit::PRIVATE);
+    myClass->Add(program->CreateMethod( "Functhion3", "void", AbstractMethodUnit::VIRTUAL | AbstractMethodUnit::CONST ), AbstractClassUnit::PUBLIC);
+    std::shared_ptr< AbstractMethodUnit > method = program->CreateMethod( "Functhion4", "void",AbstractMethodUnit::EXTERN );
     method->Add( program->CreatePrintOperator( R"(Hello, world!\n)" ) );
     myClass->Add( method, AbstractClassUnit::PROTECTED );
-    myClass->Add(program->CreateMethod( "testFunc5", "void", AbstractMethodUnit::VIRTUAL | AbstractMethodUnit::CONST ), AbstractClassUnit::PUBLIC);
+    myClass->Add(program->CreateMethod( "Functhion5", "void", AbstractMethodUnit::VIRTUAL | AbstractMethodUnit::CONST ), AbstractClassUnit::PUBLIC);
 
     return myClass->Compile();
 

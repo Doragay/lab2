@@ -13,23 +13,23 @@ std::string AbstractUnit::GenerateShift( unsigned int level ) const{ //гене�
     return result;
 
 }
-
+//список модификаторов
 const std::vector<std::string> AbstractClassUnit::ACCESS_MODIFIERS = { "public","protected", "private", "internal", "protected internal", "private protected"};
 
 void AbstractClassUnit::Add( const std::shared_ptr<AbstractUnit>& unit, Flags flags )//
 {
     int accessModifier = PRIVATE;
-    if( flags < ACCESS_MODIFIERS.size() )//проверка на существование.
+    if( flags < ACCESS_MODIFIERS.size() )//проверка на допустимость модификатора доступа
     {
         accessModifier = flags;
     }
-    m_fields[accessModifier].push_back( unit );//содержание элементов внутри, массив из методов
+    m_fields[accessModifier].push_back( unit );//добавляет объект
 }
 
 
-void AbstractMethodUnit::Add(const std::shared_ptr<AbstractUnit>& unit, Flags flags )//
+void AbstractMethodUnit::Add(const std::shared_ptr<AbstractUnit>& unit, Flags flags )
 {
-    m_body.push_back( unit );//
+    m_body.push_back( unit );
 }
 
 

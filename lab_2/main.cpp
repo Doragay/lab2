@@ -7,7 +7,7 @@
 #include <QCoreApplication>
 #include <fabrics.h>
 
-std::string generateProgram( const std::shared_ptr< AbstractFactory >& program ) {
+std::string generateProgram( const std::shared_ptr< AbstractFactory >& program ) {//создаем объекты с помощью переданной абстрактной фабрики
     std::string str = "MyClass";
     auto myClass = program->CreateClass(str);//создаем класс
     myClass->Add(program->CreateMethod( "Functhion1", "void", 0 ),AbstractClassUnit::PUBLIC);//добавляю метод к классу
@@ -18,7 +18,7 @@ std::string generateProgram( const std::shared_ptr< AbstractFactory >& program )
     myClass->Add( method, AbstractClassUnit::PROTECTED );
     myClass->Add(program->CreateMethod( "Functhion5", "void", AbstractMethodUnit::VIRTUAL | AbstractMethodUnit::CONST ), AbstractClassUnit::PUBLIC);
 
-    return myClass->Compile();
+    return myClass->Compile();//вызов метода и возвращение результата компиляции
 
 }
 

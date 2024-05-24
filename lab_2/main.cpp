@@ -10,7 +10,7 @@
 std::string generateProgram( const std::shared_ptr< AbstractFactory >& program ) {//создаем объекты с помощью переданной абстрактной фабрики
     std::string str = "MyClass";
     auto myClass = program->CreateClass(str);//создаем класс
-    myClass->Add(program->CreateMethod( "Functhion1", "void", 0 ),AbstractClassUnit::PUBLIC);//добавляю метод к классу
+    myClass->Add(program->CreateMethod( "Functhion1", "void", 0 ),AbstractClassUnit::PUBLIC);//добавляю метод к классу с модификатором доступа
     myClass->Add(program->CreateMethod( "Functhion2", "void", AbstractMethodUnit::STATIC ),AbstractClassUnit::PRIVATE);
     myClass->Add(program->CreateMethod( "Functhion3", "void", AbstractMethodUnit::VIRTUAL | AbstractMethodUnit::CONST ), AbstractClassUnit::PUBLIC);
     std::shared_ptr< AbstractMethodUnit > method = program->CreateMethod( "Functhion4", "void",AbstractMethodUnit::EXTERN );

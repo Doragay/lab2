@@ -31,7 +31,7 @@ public:
     static const std::vector< std::string > ACCESS_MODIFIERS;
 protected:
     std::string m_name;
-    using Fields = std::vector<std::shared_ptr<AbstractUnit>>;
+    using Fields = std::vector<std::shared_ptr<AbstractUnit>>;//вектор умных указателей на объекты
     std::vector<Fields> m_fields;
 public:
     explicit AbstractClassUnit( const std::string& name ) : m_name(name){
@@ -40,7 +40,7 @@ public:
 
 };
 
-class AbstractMethodUnit:public AbstractUnit
+class AbstractMethodUnit: public AbstractUnit
 {
 protected:
     std::string m_name;

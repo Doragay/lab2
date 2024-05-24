@@ -18,9 +18,9 @@ std::string CppMethodUnit::Compile( unsigned int level ) const
         result += " const";
     }
     result += " {\n";
-    for( const auto& b : m_body )//проходимся по внутреностям
+    for( const auto& b : m_body )//проходимся по каждому элементу вектора
     {
-        result += b->Compile( level + 1 );
+        result += b->Compile( level + 1 ); //компилируем каждый элемент
     }
     result += GenerateShift( level ) + "}\n";
     return result;

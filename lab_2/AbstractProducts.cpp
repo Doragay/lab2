@@ -18,12 +18,12 @@ const std::vector<std::string> AbstractClassUnit::ACCESS_MODIFIERS = { "public",
 
 void AbstractClassUnit::Add( const std::shared_ptr<AbstractUnit>& unit, Flags flags )//
 {
-    int accessModifier = PRIVATE;
+    int accessModifier = PRIVATE;//используем по умолчанию если не пройдет проверку
     if( flags < ACCESS_MODIFIERS.size() )//проверка на допустимость модификатора доступа
     {
         accessModifier = flags;
     }
-    m_fields[accessModifier].push_back( unit );//добавляет объект
+    m_fields[accessModifier].push_back( unit );//добавляет объект в вектор
 }
 
 

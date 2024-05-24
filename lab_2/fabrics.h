@@ -9,7 +9,7 @@
 class AbstractFactory//интерфейс для фабричных методов
 {
 public:
-    virtual std::unique_ptr < AbstractClassUnit > CreateClass(const std::string& name) = 0;
+    virtual std::unique_ptr < AbstractClassUnit > CreateClass(const std::string& name) = 0;//функция создает и возвращает умный указатель на объект
     virtual std::unique_ptr < AbstractMethodUnit > CreateMethod(const std::string& name, const std::string& returnType, AbstractUnit::Flags flags) = 0;
     virtual std::unique_ptr < AbstractPrintUnit > CreatePrintOperator(const std::string& text ) = 0;
     virtual ~AbstractFactory() = default;

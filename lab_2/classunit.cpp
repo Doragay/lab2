@@ -1,9 +1,9 @@
 #include "classunit.h"
 
-std::string CppClassUnit::Compile( unsigned int level ) const//собирает строку
+std::string CppClassUnit::Compile( unsigned int level ) const//собирает код
 {
     std::string result = GenerateShift( level ) + "class " + m_name + " {\n";
-    for( size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i )
+    for( size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i )//проходимся по модификаторам доступа
     {
 
         if( m_fields[i].empty() ) {//пустые, пропускаем

@@ -8,7 +8,7 @@
 class AbstractUnit
 {
 public:
-    using Flags = unsigned int;//номер модификатора
+    using Flags = unsigned int;//тип модификатора
     virtual void Add(const std::shared_ptr<AbstractUnit>& unit, Flags flags);
     virtual std::string Compile( unsigned int level = 0 ) const = 0;
     virtual ~AbstractUnit() = default;
@@ -35,7 +35,7 @@ protected:
     std::vector<Fields> m_fields;
 public:
     explicit AbstractClassUnit( const std::string& name ) : m_name(name){
-        m_fields.resize( ACCESS_MODIFIERS.size() );}//изменяет размер
+        m_fields.resize( ACCESS_MODIFIERS.size() );}//изменяет размер контейнера
     void Add(const std::shared_ptr<AbstractUnit >& unit, Flags flags );
 
 };
@@ -59,7 +59,7 @@ public:
     };
 
 public:
-    AbstractMethodUnit( const std::string& name, const std::string& returnType, Flags flags ) : m_name( name ), m_returnType( returnType ), m_flags( flags ){}
+    AbstractMethodUnit( const std::string& name, const std::string& returnType, Flags flags ) : m_name( name ), m_returnType( returnType ), m_flags( flags ){} //конструктор позволяет создавать объекты класса, инициализируя их
     void Add(const std::shared_ptr<AbstractUnit>& unit, Flags = 0 );
 
 };

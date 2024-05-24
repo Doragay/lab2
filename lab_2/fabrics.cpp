@@ -3,7 +3,7 @@
 //Cpp
 std::unique_ptr < AbstractClassUnit > CppFactory::CreateClass(const std::string& name)//создает продукты
 {
-    return std::unique_ptr < AbstractClassUnit >(new CppClassUnit(name));//возвращаем созданные продукт абстрактного типа
+    return std::unique_ptr < AbstractClassUnit >(new CppClassUnit(name));//возвращаем указатель на продукт абстрактного типа
 }
 std::unique_ptr < AbstractMethodUnit > CppFactory::CreateMethod(const std::string& name, const std::string& returnType, AbstractUnit::Flags flags)
 {

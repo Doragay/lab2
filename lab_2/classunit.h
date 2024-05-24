@@ -9,7 +9,7 @@
 class CppClassUnit final: public AbstractClassUnit
 {
 public:
-    CppClassUnit( const std::string& name ) : AbstractClassUnit(name){}//конструктор
+    CppClassUnit( const std::string& name ) : AbstractClassUnit(name){}//вывзывает конструктор абастрактного класса и передаем параметр
     std::string Compile( unsigned int level = 0 ) const;
 };
 

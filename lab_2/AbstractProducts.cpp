@@ -1,7 +1,7 @@
 #include "AbstractProducts.h"
 
 
-void AbstractUnit::Add(const std::shared_ptr<AbstractUnit>& unit, Flags flags){
+void AbstractUnit::Add(const std::shared_ptr<AbstractUnit>& unit, Flags flags){//определение метода
     throw std::runtime_error( "Not supported" );//выбрасывает исключения
 }
 std::string AbstractUnit::GenerateShift( unsigned int level ) const{ //генерация отступов
@@ -25,7 +25,6 @@ void AbstractClassUnit::Add( const std::shared_ptr<AbstractUnit>& unit, Flags fl
     }
     m_fields[accessModifier].push_back( unit );//добавляет объект в вектор
 }
-
 
 void AbstractMethodUnit::Add(const std::shared_ptr<AbstractUnit>& unit, Flags flags )
 {

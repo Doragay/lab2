@@ -34,7 +34,7 @@ protected:
     using Fields = std::vector<std::shared_ptr<AbstractUnit>>;
     std::vector<Fields> m_fields;
 public:
-    explicit AbstractClassUnit( const std::string& name ) : m_name(name){
+    explicit AbstractClassUnit( const std::string& name ) : m_name(name){//конструктор принимает ссылку на имя класса и инициализирует поле m_name этим параметром
         m_fields.resize( ACCESS_MODIFIERS.size() );}//изменяет размер контейнера
     void Add(const std::shared_ptr<AbstractUnit >& unit, Flags flags );
 
